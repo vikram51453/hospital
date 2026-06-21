@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Plus - Hospital Management System</title>
+    <meta name="description" content="Professional dashboard for MediCare Plus Hospital Management System.">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. Header Section -->
+    <header>
+        <div class="container header-top">
+            <div class="logo-area">
+                <i class="fa-solid fa-hospital-user logo-icon"></i>
+                <div>
+                    <h1 class="app-name">MediCare Plus</h1>
+                    <p class="tagline">Advanced Hospital Management System</p>
+                </div>
+            </div>
+            <div class="student-info">
+                Student Name: <strong>vikram</strong><br>
+                Register No: <strong>2303717620521059</strong>
+            </div>
+        </div>
+
+        <!-- 2. Navigation Bar -->
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                    <li><a href="#services"><i class="fa-solid fa-notes-medical"></i> Services</a></li>
+                    <li><a href="#reports"><i class="fa-solid fa-file-medical"></i> Reports</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-address-book"></i> Contact</a></li>
+                    <li><a href="#logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 7. Latest Updates (Marquee) -->
+    <div class="updates-section">
+        <div class="container" style="display: flex; align-items: center;">
+            <span class="updates-label">Latest Updates</span>
+            <marquee behavior="scroll" direction="left">
+                Welcome to MediCare Plus! System maintenance scheduled for this weekend. | New cardiology department modules have been deployed. | Update your profile information by end of the month.
+            </marquee>
+        </div>
+    </div>
+
+    <div class="container">
+        <main>
+            <!-- 3. Welcome Section -->
+            <section id="home" class="welcome-section">
+                <h2><i class="fa-solid fa-hand-holding-medical"></i> Welcome to MediCare Plus</h2>
+                <div class="welcome-content">
+                    <div class="description">
+                        <p><strong>MediCare Plus</strong> is a comprehensive Hospital Management System designed to streamline healthcare operations. From patient registration to billing, our platform ensures seamless coordination across all hospital departments, improving efficiency and patient care quality.</p>
+                        <br>
+                        <p>This professional dashboard provides administrators with real-time insights into hospital activities, financial metrics, and operational performance.</p>
+                    </div>
+                    <div class="mission-vision">
+                        <h3>Our Vision</h3>
+                        <p>To revolutionize healthcare delivery by providing intuitive, reliable, and advanced technological solutions to medical institutions worldwide.</p>
+                        <br>
+                        <h3>Our Mission</h3>
+                        <p>Empowering healthcare professionals with efficient management tools, enabling them to focus more on patient care rather than administrative tasks.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Dashboard Statistics -->
+            <section id="dashboard">
+                <h2><i class="fa-solid fa-chart-line"></i> Dashboard Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-users icon"></i>
+                        <h3>Total Users</h3>
+                        <div class="value">12,450</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-user-doctor icon"></i>
+                        <h3>Active Users</h3>
+                        <div class="value">3,240</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-file-invoice-dollar icon"></i>
+                        <h3>Revenue</h3>
+                        <div class="value">$84.5k</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-money-bill-transfer icon"></i>
+                        <h3>Transactions</h3>
+                        <div class="value">8,921</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-bell icon"></i>
+                        <h3>Notifications</h3>
+                        <div class="value">14</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-list-check icon"></i>
+                        <h3>Pending Tasks</h3>
+                        <div class="value">28</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5 & 6. Features and Services Sections -->
+            <div class="features-services-grid" id="about">
+                <!-- 5. Features Section (Using <ul>) -->
+                <section class="list-block">
+                    <h2><i class="fa-solid fa-star"></i> Core Features</h2>
+                    <ul>
+                        <li>Centralized patient electronic health records (EHR)</li>
+                        <li>Automated billing and insurance claim processing</li>
+                        <li>Real-time inventory and pharmacy management</li>
+                        <li>Role-based access control for security</li>
+                        <li>Integrated lab and pathology reporting</li>
+                        <li>Telemedicine and remote consultation support</li>
+                    </ul>
+                </section>
+
+                <!-- 6. Services Section (Using <ol>) -->
+                <section class="list-block" id="services">
+                    <h2><i class="fa-solid fa-stethoscope"></i> Our Services</h2>
+                    <ol>
+                        <li>Inpatient and Outpatient Management</li>
+                        <li>Emergency Ward Operations</li>
+                        <li>Diagnostic Laboratory Services</li>
+                        <li>Intensive Care Unit (ICU) Monitoring</li>
+                        <li>Surgical Theater Scheduling</li>
+                        <li>Pharmacy Dispensing & Restocking</li>
+                    </ol>
+                </section>
+            </div>
+
+            <!-- 8. Registration Form -->
+            <section id="registration">
+                <h2><i class="fa-solid fa-user-plus"></i> New User Registration</h2>
+                <form action="#" method="POST">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label class="radio-option"><input type="radio" name="gender" value="male" required> Male</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="female" required> Female</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="other" required> Other</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="address">Residential Address</label>
+                            <textarea id="address" name="address" rows="3" placeholder="Enter your complete address" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit"><i class="fa-solid fa-check"></i> Submit Registration</button>
+                        <button type="reset"><i class="fa-solid fa-rotate-left"></i> Reset Form</button>
+                    </div>
+                </form>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 10. Contact Information & 11. Footer -->
+    <div class="footer-wrapper" id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fa-solid fa-envelope"></i> admin@medicareplus.com</p>
+                    <p><i class="fa-solid fa-phone"></i> +1 (800) 123-4567</p>
+                    <p><i class="fa-solid fa-location-dot"></i> 123 Health Avenue, Medical District, NY 10001</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Connect With Us</h3>
+                    <p>Follow us on social media for health tips and system updates.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 11. Footer -->
+        <div class="footer-bottom">
+            &copy; 2026 MediCare Plus. Designed by vikram.
+        </div>
+    </div>
+
+</body>
+</html>
