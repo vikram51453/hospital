@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediCare Plus - Hospital Management System</title>
-    <meta name="description" content="Professional dashboard for MediCare Plus Hospital Management System.">
+    <title>MediCare Plus - Hospital Management Dashboard</title>
+    <meta name="description" content="Interactive dashboard for MediCare Plus Hospital Management System.">
     <link rel="stylesheet" href="style.css">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,12 +15,64 @@
     <header>
         <div class="container header-top">
             <div class="logo-area">
-                <i class="fa-solid fa-hospital-user logo-icon"></i>
+                <i class="fa-solid fa-hospital-user logo-icon pulse-animation"></i>
                 <div>
                     <h1 class="app-name">MediCare Plus</h1>
                     <p class="tagline">Advanced Hospital Management System</p>
                 </div>
             </div>
+            
+            <!-- Controls area (Clock, Notifications, Theme Toggle) -->
+            <div class="header-controls">
+                <!-- 9. Date and Time Display -->
+                <div class="datetime-display" id="datetime">
+                    <i class="fa-solid fa-calendar-days"></i> <span id="clock-text">Loading date & time...</span>
+                </div>
+
+                <!-- 11. Notification Icon & Panel Trigger -->
+                <div class="notification-wrapper">
+                    <button class="control-btn" id="notificationBtn" aria-label="Toggle Notifications">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-badge bounce-animation">3</span>
+                    </button>
+                    <!-- Notification Panel -->
+                    <div class="notification-panel" id="notificationPanel">
+                        <div class="panel-header">
+                            <h3>Alert Center</h3>
+                            <button id="markAllRead">Mark all read</button>
+                        </div>
+                        <ul class="notification-list">
+                            <li class="unread">
+                                <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+                                <div class="notif-content">
+                                    <p>Critical: ICU Room 4 sensor alerts triggered.</p>
+                                    <span>2 mins ago</span>
+                                </div>
+                            </li>
+                            <li class="unread">
+                                <i class="fa-solid fa-circle-check success-icon"></i>
+                                <div class="notif-content">
+                                    <p>System backup completed successfully.</p>
+                                    <span>1 hour ago</span>
+                                </div>
+                            </li>
+                            <li class="unread">
+                                <i class="fa-solid fa-calendar-plus info-icon"></i>
+                                <div class="notif-content">
+                                    <p>5 new appointment bookings pending approval.</p>
+                                    <span>3 hours ago</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 10. Theme Switcher Button -->
+                <button class="control-btn" id="themeToggleBtn" title="Toggle Light/Dark Mode" aria-label="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+
             <div class="student-info">
                 Student Name: <strong>vikram</strong><br>
                 Register No: <strong>2303717620521059</strong>
@@ -30,14 +82,15 @@
         <!-- 2. Navigation Bar -->
         <div class="container">
             <nav>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="#home" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
                     <li><a href="#dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+                    <li><a href="#features"><i class="fa-solid fa-star"></i> Features</a></li>
                     <li><a href="#services"><i class="fa-solid fa-notes-medical"></i> Services</a></li>
                     <li><a href="#reports"><i class="fa-solid fa-file-medical"></i> Reports</a></li>
-                    <li><a href="#about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+                    <li><a href="#registration"><i class="fa-solid fa-user-plus"></i> Join Us</a></li>
                     <li><a href="#contact"><i class="fa-solid fa-address-book"></i> Contact</a></li>
-                    <li><a href="#logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                    <li><a href="#logout" id="logoutLink"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
                 </ul>
             </nav>
         </div>
@@ -47,24 +100,67 @@
     <div class="updates-section">
         <div class="container" style="display: flex; align-items: center;">
             <span class="updates-label">Latest Updates</span>
-            <marquee behavior="scroll" direction="left">
-                Welcome to MediCare Plus! System maintenance scheduled for this weekend. | New cardiology department modules have been deployed. | Update your profile information by end of the month.
+            <marquee behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                Welcome to MediCare Plus Version 2.0! System maintenance scheduled for this weekend. | New cardiology department modules have been deployed. | Update your profile information by end of the month.
             </marquee>
         </div>
     </div>
 
+    <!-- 8. Image/Banner Slider -->
+    <section class="slider-section container">
+        <div class="slider-container">
+            <div class="slides-wrapper">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1200&auto=format&fit=crop" alt="Smart Hospital Infrastructure">
+                    <div class="slide-caption">
+                        <h2>Advanced Diagnostics Care</h2>
+                        <p>Leveraging artificial intelligence to pinpoint diagnoses and customize treatment plans.</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=1200&auto=format&fit=crop" alt="Emergency Medical Services">
+                    <div class="slide-caption">
+                        <h2>24/7 Critical Emergency Services</h2>
+                        <p>Fully equipped trauma rooms with swift action response and real-time sensor monitoring.</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1200&auto=format&fit=crop" alt="Healthcare Technology">
+                    <div class="slide-caption">
+                        <h2>Telemedicine & Remote Consultation</h2>
+                        <p>Connecting patients with leading medical professionals globally from the comfort of home.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Controls -->
+            <button class="slide-btn prev-btn" id="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slide-btn next-btn" id="nextSlide"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <!-- Slider Indicators -->
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
     <div class="container">
         <main>
-            <!-- 3. Welcome Section -->
-            <section id="home" class="welcome-section">
-                <h2><i class="fa-solid fa-hand-holding-medical"></i> Welcome to MediCare Plus</h2>
+            <!-- 3. Welcome Banner with Fade-in/Slide-in Animation -->
+            <section id="home" class="welcome-section anim-slide-in">
+                <h2><i class="fa-solid fa-hand-holding-medical animate-bounce"></i> Welcome to MediCare Plus</h2>
                 <div class="welcome-content">
-                    <div class="description">
+                    <div class="description anim-fade-in">
                         <p><strong>MediCare Plus</strong> is a comprehensive Hospital Management System designed to streamline healthcare operations. From patient registration to billing, our platform ensures seamless coordination across all hospital departments, improving efficiency and patient care quality.</p>
                         <br>
-                        <p>This professional dashboard provides administrators with real-time insights into hospital activities, financial metrics, and operational performance.</p>
+                        <p>This professional interactive dashboard provides administrators with real-time insights into hospital activities, financial metrics, and operational performance.</p>
                     </div>
-                    <div class="mission-vision">
+                    <div class="mission-vision anim-fade-in" style="animation-delay: 0.2s;">
                         <h3>Our Vision</h3>
                         <p>To revolutionize healthcare delivery by providing intuitive, reliable, and advanced technological solutions to medical institutions worldwide.</p>
                         <br>
@@ -74,118 +170,128 @@
                 </div>
             </section>
 
-            <!-- 4. Dashboard Statistics -->
-            <section id="dashboard">
+            <!-- 4. Dashboard Statistics with 5. Dynamic Statistics Counters -->
+            <section id="dashboard" class="anim-slide-in">
                 <h2><i class="fa-solid fa-chart-line"></i> Dashboard Statistics</h2>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <i class="fa-solid fa-users icon"></i>
-                        <h3>Total Users</h3>
-                        <div class="value">12,450</div>
+                        <i class="fa-solid fa-user-injured icon zoom-on-hover"></i>
+                        <h3>Total Patients</h3>
+                        <!-- Counters initialized at 0, counting up dynamically via JS -->
+                        <div class="value counter" data-target="12450">0</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fa-solid fa-user-doctor icon"></i>
-                        <h3>Active Users</h3>
-                        <div class="value">3,240</div>
+                        <i class="fa-solid fa-user-doctor icon zoom-on-hover"></i>
+                        <h3>Active Doctors</h3>
+                        <div class="value counter" data-target="3240">0</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fa-solid fa-file-invoice-dollar icon"></i>
-                        <h3>Revenue</h3>
-                        <div class="value">$84.5k</div>
+                        <i class="fa-solid fa-wallet icon zoom-on-hover"></i>
+                        <h3>Monthly Revenue</h3>
+                        <div class="value counter" data-target="84500" data-prefix="$">0</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fa-solid fa-money-bill-transfer icon"></i>
+                        <i class="fa-solid fa-file-invoice icon zoom-on-hover"></i>
                         <h3>Transactions</h3>
-                        <div class="value">8,921</div>
+                        <div class="value counter" data-target="8921">0</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fa-solid fa-bell icon"></i>
-                        <h3>Notifications</h3>
-                        <div class="value">14</div>
+                        <i class="fa-solid fa-triangle-exclamation icon zoom-on-hover danger-text"></i>
+                        <h3>Alerts Pending</h3>
+                        <div class="value counter" data-target="14">0</div>
                     </div>
                     <div class="stat-card">
-                        <i class="fa-solid fa-list-check icon"></i>
+                        <i class="fa-solid fa-clipboard-list icon zoom-on-hover"></i>
                         <h3>Pending Tasks</h3>
-                        <div class="value">28</div>
+                        <div class="value counter" data-target="28">0</div>
                     </div>
                 </div>
             </section>
 
-            <!-- 5 & 6. Features and Services Sections -->
-            <div class="features-services-grid" id="about">
-                <!-- 5. Features Section (Using <ul>) -->
-                <section class="list-block">
-                    <h2><i class="fa-solid fa-star"></i> Core Features</h2>
+            <!-- 6. Features Section & 7. Services Section -->
+            <div class="features-services-grid">
+                <!-- 6. Features Section (Using <ul>) -->
+                <section class="list-block anim-slide-in" id="features">
+                    <h2><i class="fa-solid fa-star star-animation"></i> Core Features</h2>
                     <ul>
-                        <li>Centralized patient electronic health records (EHR)</li>
-                        <li>Automated billing and insurance claim processing</li>
-                        <li>Real-time inventory and pharmacy management</li>
-                        <li>Role-based access control for security</li>
-                        <li>Integrated lab and pathology reporting</li>
-                        <li>Telemedicine and remote consultation support</li>
+                        <li class="feature-item"><i class="fa-solid fa-check-double"></i> Centralized patient electronic health records (EHR)</li>
+                        <li class="feature-item"><i class="fa-solid fa-check-double"></i> Automated billing and insurance claim processing</li>
+                        <li class="feature-item"><i class="fa-solid fa-check-double"></i> Real-time inventory and pharmacy management</li>
+                        <li class="feature-item"><i class="fa-solid fa-check-double"></i> Role-based access control for security</li>
+                        <li class="feature-item"><i class="fa-solid fa-check-double"></i> Integrated lab and pathology reporting</li>
+                        <li class="feature-item"><i class="fa-solid fa-check-double"></i> Telemedicine and remote consultation support</li>
                     </ul>
                 </section>
 
-                <!-- 6. Services Section (Using <ol>) -->
-                <section class="list-block" id="services">
+                <!-- 7. Services Section (Using <ol>) -->
+                <section class="list-block anim-slide-in" id="services">
                     <h2><i class="fa-solid fa-stethoscope"></i> Our Services</h2>
                     <ol>
-                        <li>Inpatient and Outpatient Management</li>
-                        <li>Emergency Ward Operations</li>
-                        <li>Diagnostic Laboratory Services</li>
-                        <li>Intensive Care Unit (ICU) Monitoring</li>
-                        <li>Surgical Theater Scheduling</li>
-                        <li>Pharmacy Dispensing & Restocking</li>
+                        <li class="service-item">Inpatient and Outpatient Management</li>
+                        <li class="service-item">Emergency Ward Operations</li>
+                        <li class="service-item">Diagnostic Laboratory Services</li>
+                        <li class="service-item">Intensive Care Unit (ICU) Monitoring</li>
+                        <li class="service-item">Surgical Theater Scheduling</li>
+                        <li class="service-item">Pharmacy Dispensing & Restocking</li>
                     </ol>
                 </section>
             </div>
 
-            <!-- 8. Registration Form -->
-            <section id="registration">
+            <!-- 12. Registration Form with 13. JS Form Validation -->
+            <section id="registration" class="anim-slide-in">
                 <h2><i class="fa-solid fa-user-plus"></i> New User Registration</h2>
-                <form action="#" method="POST">
+                <form id="registrationForm" novalidate>
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name">
+                            <span class="error-msg" id="error-fullName"></span>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                            <input type="email" id="email" name="email" placeholder="example@domain.com">
+                            <span class="error-msg" id="error-email"></span>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter 10 digit number">
+                            <span class="error-msg" id="error-phone"></span>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Create a strong password" required>
+                            <input type="password" id="password" name="password" placeholder="Min 8 characters (1 number, 1 special)">
+                            <span class="error-msg" id="error-password"></span>
                         </div>
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="radio-group">
-                                <label class="radio-option"><input type="radio" name="gender" value="male" required> Male</label>
-                                <label class="radio-option"><input type="radio" name="gender" value="female" required> Female</label>
-                                <label class="radio-option"><input type="radio" name="gender" value="other" required> Other</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="male"> Male</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="female"> Female</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="other"> Other</label>
                             </div>
+                            <span class="error-msg" id="error-gender"></span>
                         </div>
                         <div class="form-group">
                             <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" name="dob" required>
+                            <input type="date" id="dob" name="dob">
+                            <span class="error-msg" id="error-dob"></span>
                         </div>
                         <div class="form-group full-width">
                             <label for="address">Residential Address</label>
-                            <textarea id="address" name="address" rows="3" placeholder="Enter your complete address" required></textarea>
+                            <textarea id="address" name="address" rows="3" placeholder="Enter your complete address (min 10 characters)"></textarea>
+                            <span class="error-msg" id="error-address"></span>
                         </div>
                     </div>
+                    <!-- 15. Action Buttons (CSS transition effects applied) -->
                     <div class="form-actions">
-                        <button type="submit"><i class="fa-solid fa-check"></i> Submit Registration</button>
-                        <button type="reset"><i class="fa-solid fa-rotate-left"></i> Reset Form</button>
+                        <button type="submit" class="action-btn-submit"><i class="fa-solid fa-check"></i> Submit Registration</button>
+                        <button type="reset" class="action-btn-reset"><i class="fa-solid fa-rotate-left"></i> Reset Form</button>
                     </div>
                 </form>
             </section>
-            <!-- 9. Application Modules Table -->
-            <section id="reports">
+
+            <!-- Application Modules Table -->
+            <section id="reports" class="anim-slide-in">
                 <h2><i class="fa-solid fa-table"></i> Application Modules Overview</h2>
                 <div class="table-responsive">
                     <table>
@@ -226,37 +332,43 @@
                     </table>
                 </div>
             </section>
-
         </main>
     </div>
 
-    <!-- 10. Contact Information & 11. Footer -->
+    <!-- 17. Contact Section & 18. Footer -->
     <div class="footer-wrapper" id="contact">
         <div class="container">
             <div class="contact-section">
-                <div class="contact-info">
+                <div class="contact-info anim-slide-in">
                     <h3>Contact Us</h3>
                     <p><i class="fa-solid fa-envelope"></i> admin@medicareplus.com</p>
                     <p><i class="fa-solid fa-phone"></i> +1 (800) 123-4567</p>
                     <p><i class="fa-solid fa-location-dot"></i> 123 Health Avenue, Medical District, NY 10001</p>
                 </div>
-                <div class="contact-info">
+                <div class="contact-info anim-slide-in" style="animation-delay: 0.1s;">
                     <h3>Connect With Us</h3>
                     <p>Follow us on social media for health tips and system updates.</p>
                     <div class="social-links">
-                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="Twitter" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn" class="social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" title="Instagram" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- 11. Footer -->
+        <!-- 18. Footer -->
         <div class="footer-bottom">
-            &copy; 2026 MediCare Plus. Designed by vikram.
+            &copy; 2026 MediCare Plus. Designed by vikram (Reg No. 2303717620521059)
         </div>
     </div>
 
+    <!-- 16. Scroll-to-Top Button -->
+    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Custom Script File linking JavaScript interactivity -->
+    <script src="script.js"></script>
 </body>
 </html>
